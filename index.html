@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteStay | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">🏨 EliteStay</div>
+            <nav id="sidebar-nav">
+                <div class="nav-item active" data-section="dashboard-sec">
+                    <i class="ph ph-squares-four"></i> Dashboard
+                </div>
+                <div class="nav-item" data-section="bookings-sec">
+                    <i class="ph ph-calendar-check"></i> Bookings
+                </div>
+                <div class="nav-item" data-section="guests-sec">
+                    <i class="ph ph-users"></i> Guests
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h2 id="page-title">Reservation Desk</h2>
+                <div class="admin-badge">Admin Portal</div>
+            </header>
+
+            <section id="dashboard-sec" class="content-section active">
+                <div class="grid-layout">
+                    <div class="card form-card">
+                        <h3>New Reservation</h3>
+                        <form id="booking-form">
+                            <input type="text" id="gName" placeholder="Guest Full Name" required>
+                            <div class="input-row">
+                                <input type="date" id="gDate" required>
+                                <input type="number" id="gNights" placeholder="Nights" min="1" value="1" required>
+                            </div>
+                            <select id="gRoom">
+                                <option value="2000">Standard Room (₹2000/night)</option>
+                                <option value="4500">Deluxe Room (₹4500/night)</option>
+                                <option value="8500">Suite (₹8500/night)</option>
+                            </select>
+                            <div class="live-estimate">Total Estimate: <span id="livePrice">₹2000</span></div>
+                            <button type="submit" class="confirm-btn">Confirm Booking</button>
+                        </form>
+                    </div>
+
+                    <div class="stats-panel">
+                        <div class="card stat-card">
+                            <span>Total Bookings</span>
+                            <h2 id="total-bookings">0</h2>
+                        </div>
+                        <div class="card stat-card">
+                            <span>Total Revenue</span>
+                            <h2 id="total-revenue">₹0</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="bookings-sec" class="content-section">
+                <div class="card table-card">
+                    <h3>Recent Activity</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Guest</th>
+                                <th>Check-in</th>
+                                <th>Room</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booking-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="guests-sec" class="content-section">
+                <div class="card table-card">
+                    <h3>Guest History</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Guest Name</th>
+                                <th>Total Stays</th>
+                                <th>Membership</th>
+                            </tr>
+                        </thead>
+                        <tbody id="guest-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
